@@ -6,8 +6,8 @@ const { summarizeMessages } = require('../services/aiService');
 const db = require('../db/database');
 
 // GET /api/summary → devuelve el resumen más reciente
-router.get('/', (req, res) => {
-  const summary = getLatestSummary();
+router.get('/', async (req, res) => {
+  const summary = await getLatestSummary();
 
   if (!summary) {
     return res.json({ summary: null, message: 'No hay resumen disponible aún.' });
